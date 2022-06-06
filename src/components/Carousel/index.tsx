@@ -52,7 +52,7 @@ const Carousel: React.FC<Props> = (props) => {
             if (prettyIndex >= childrenCount) {
                 prettyIndex = childrenCount - 1;
             }
-            setActiveSlide(prettyIndex);
+            setActiveSlide(prettyIndex - 1);
             return setSliderPosition(prettyIndex * slideFinalWidth + (offsetBefore || 0));
         }
         if (direction === 'prev') {
@@ -89,7 +89,7 @@ const Carousel: React.FC<Props> = (props) => {
     }, [sliderRef, childrenCount, offsetAfter, offsetBefore, betweenSlides]);
 
     return (
-        <Container style={style} {...(draggable ? dragHandler : null)}>
+        <Container style={style} {...(draggable ? dragHandler : null)} data-test-id="carousel-container">
             <Inner
                 ref={sliderRef}
                 style={{transform: `translateX(-${sliderPosition}px)`}}
@@ -97,6 +97,7 @@ const Carousel: React.FC<Props> = (props) => {
                 offsetAfter={offsetAfter}
                 transitionSpeed={transitionSpeed}
                 transitionFnc={transitionFnc}
+                data-test-id="carousel-inner"
             >
                 {children
                     ? Children.map(children, (child) =>
@@ -116,7 +117,7 @@ const Carousel: React.FC<Props> = (props) => {
                     <ArrowsElement />
                 ) : (
                     <Controls>
-                        <ArrowButton arrow="left" onClick={() => changeSlide('prev')} />
+                        <ArrowButton arrow="left" onClick={() => changeSlide('prev')} data-test-id="prev-slide" />
                         {inputSlide === InputSlide.Editing ? (
                             <Formik
                                 initialValues={{slide: 0}}
@@ -133,8 +134,9 @@ const Carousel: React.FC<Props> = (props) => {
                                                 name="slide"
                                                 value={props.values.slide || ''}
                                                 onChange={props.handleChange}
+                                                data-test-id="slide-index-input"
                                             />
-                                            <button type="submit">
+                                            <button type="submit" data-test-id="slide-index-enter">
                                                 <IoCheckmarkSharp size={24} />
                                             </button>
                                         </Counter>
@@ -142,11 +144,11 @@ const Carousel: React.FC<Props> = (props) => {
                                 )}
                             </Formik>
                         ) : (
-                            <Counter onClick={() => setInputSlide(InputSlide.Editing)}>
+                            <Counter onClick={() => setInputSlide(InputSlide.Editing)} data-test-id="change-index">
                                 {activeSlide + 1} / {childrenCount}
                             </Counter>
                         )}
-                        <ArrowButton arrow="right" onClick={() => changeSlide('next')} />
+                        <ArrowButton arrow="right" onClick={() => changeSlide('next')} data-test-id="next-slide" />
                     </Controls>
                 )
             ) : null}
