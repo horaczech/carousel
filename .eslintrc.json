@@ -6,9 +6,10 @@
   "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
   "overrides": [
     {
-      "files": "*.{js,jsx}",
+      "files": "*",
       "rules": {
-        "no-undef": "off"
+        "no-undef": "off",
+        "@typescript-eslint/no-explicit-any": "off"
       }
     }
   ],
