@@ -2,6 +2,7 @@ import {createGlobalStyle} from 'styled-components/macro';
 import {
     BREAKPOINTS,
     COLORS,
+    flex,
     FONT_SIZES,
     FONT_WEIGHTS,
     LINE_HEIGHTS,
@@ -141,6 +142,7 @@ const GlobalStyle = createGlobalStyle`
      cursor: pointer;
      border: 0;
      flex-shrink: 0;
+     ${flex.center}
      transition: all ${TRANSITIONS.basic};
      font-size: ${FONT_SIZES.button};
      line-height: ${LINE_HEIGHTS.button};
@@ -148,6 +150,7 @@ const GlobalStyle = createGlobalStyle`
      border-radius: ${RADIUSES.small};
      color: ${COLORS.black};
      padding: ${OFFSETS.small};
+     background-color: ${COLORS.lightGrey}
    }
 `;
 

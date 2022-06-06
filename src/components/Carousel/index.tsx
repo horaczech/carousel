@@ -46,10 +46,10 @@ const Carousel: React.FC<Props> = (props) => {
     const changeSlide = (direction: 'prev' | 'next' | 'toSlide', slideIndex?: number) => {
         if (direction === 'toSlide' && slideIndex !== undefined) {
             let prettyIndex = Math.floor(slideIndex);
-            if (prettyIndex < 0) {
-                prettyIndex = 0;
+            if (prettyIndex < 1) {
+                prettyIndex = 1;
             }
-            if (prettyIndex >= childrenCount) {
+            if (prettyIndex > childrenCount) {
                 prettyIndex = childrenCount - 1;
             }
             setActiveSlide(prettyIndex - 1);

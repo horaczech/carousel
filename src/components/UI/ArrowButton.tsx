@@ -1,7 +1,7 @@
 import React, {HTMLProps, ReactNode} from 'react';
 import {IoArrowBackOutline, IoArrowForwardOutline} from 'react-icons/io5';
 import styled from 'styled-components/macro';
-import {flex, OFFSETS} from '../../constants/style';
+import {OFFSETS} from '../../constants/style';
 
 interface Props extends HTMLProps<HTMLButtonElement> {
     arrow: 'left' | 'right' | 'custom';
@@ -18,5 +18,4 @@ export default ArrowButton;
 
 const Button = styled.button`
     margin: ${OFFSETS.small};
-    ${flex.center}
 `;
