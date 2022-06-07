@@ -14,4 +14,5 @@ export default Section;
 
 const Container = styled.section`
     padding: 20px;
+    overflow: hidden;
 `;

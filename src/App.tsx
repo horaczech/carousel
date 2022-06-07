@@ -43,6 +43,8 @@ const App: React.FC = () => {
                             betweenSlides={20}
                             borderRadius={200}
                             imageFit="cover"
+                            hoverEffect="zoom"
+                            hoverZoom={1.2}
                             draggable
                             transitionSpeed="500ms"
                             transitionFnc="ease-out"
@@ -50,9 +52,7 @@ const App: React.FC = () => {
                             {allStories
                                 ? allStories.map((story) => (
                                       <Slide key={story.id} borderRadius={200} style={{height: 200, width: 200}}>
-                                          <a href="#">
-                                              <img src={story.cover_src || ''} alt={story.user.display_name} />
-                                          </a>
+                                          <img src={story.cover_src || ''} alt={story.user.display_name} />
                                       </Slide>
                                   ))
                                 : null}
@@ -64,7 +64,14 @@ const App: React.FC = () => {
                 <Section>
                     <h3>Collections</h3>
                     {allStories ? (
-                        <Carousel offsetBefore={40} betweenSlides={20} imageFit="cover" borderRadius={30} draggable>
+                        <Carousel
+                            offsetBefore={40}
+                            betweenSlides={20}
+                            imageFit="cover"
+                            borderRadius={30}
+                            hoverEffect="translate"
+                            draggable
+                        >
                             {allCollections && allCollections.length > 0
                                 ? allCollections.map((userCollection) => (
                                       <Slide key={userCollection.id} style={{height: 140, width: 300}}>

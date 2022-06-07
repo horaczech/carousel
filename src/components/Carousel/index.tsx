@@ -159,7 +159,7 @@ const Carousel: React.FC<Props> = (props) => {
 export default Carousel;
 
 const Container = styled.div`
-    overflow: hidden;
+    //overflow: hidden;
 `;
 
 const Inner = styled.div<SharedCarouselProps>`
